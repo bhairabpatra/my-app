@@ -17,7 +17,7 @@ const Userlist = (props) => {
                   <div className="card-body">
                     <h4 className="card-title">{user.login}</h4>
                     <p className="card-text">{user.type}</p>
-                    <a href={user.url} class="btn btn-primary">
+                    <a href={user.url} className="btn btn-primary">
                       <span className="">visit profile</span>
                     </a>
                   </div>

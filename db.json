@@ -1,0 +1,24 @@
+{
+  "contactInfo": [
+    {
+      "id": 1,
+      "name": "bhairab",
+      "email": "test@gmail.com",
+      "comment": "This is test"
+    },
+    {
+      "name": "bhairab",
+      "email": "bhairab@gmail.com",
+      "message": "This is test",
+      "id": 2
+    }
+  ],
+  "login": [
+    {
+      "id": 1,
+      "email": "test@gmail.com",
+      "pwd": "12345"
+    }
+   
+  ]
+}
