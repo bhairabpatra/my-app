@@ -1,13 +1,19 @@
 //https://www.pluralsight.com/guides/how-to-router-redirect-after-login
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-let apiUrl = "http://localhost:3000/login";
+let apiUrl = "http://localhost:3000/loginInfo";
 const Login = () => {
+  const navigate = useNavigate();
   const [loginDetails, setloginDetails] = useState({
     email: "",
     pwd: "",
   });
+  const [authenticated, setauthenticated] = useState(
+    localStorage.getItem(localStorage.getItem("authenticated") || false)
+  );
+
   const handelInput = (e) => {
     e.preventDefault();
     setloginDetails({ ...loginDetails, [e.target.name]: e.target.value });
@@ -15,7 +21,6 @@ const Login = () => {
 
   const handelLogin = (e) => {
     e.preventDefault();
-    console.log(loginDetails.email);
     axios
       .get(apiUrl)
       .then((response) => {
@@ -24,6 +29,11 @@ const Login = () => {
           loginDetails.pwd === response.data[0].pwd
         ) {
           console.log("Login sucess");
+          setauthenticated(true);
+          localStorage.setItem("authenticated", true);
+          console.log("authenticated", authenticated);
+          navigate("/");
+
           setloginDetails({ email: "", pwd: "" });
         } else {
           console.log("Login failed");
